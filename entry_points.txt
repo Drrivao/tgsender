@@ -1,0 +1,2 @@
+[console_scripts]
+tgsender = tgsender.cli:main
