@@ -1,10 +1,7 @@
 """Console script for tgsender."""
 import sys
-
 import click
-
 from . import tgsender
-
 
 @click.command()
 def main(args=None):
@@ -16,7 +13,6 @@ def main(args=None):
 
     tgsender.main()
     return 0
-
 
 if __name__ == "__main__":
     sys.exit(main())  # pragma: no cover

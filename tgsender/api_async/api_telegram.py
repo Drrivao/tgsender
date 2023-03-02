@@ -320,7 +320,7 @@ async def send_files(list_dict, chat_id, time_limit=20):
 
     for index, d in enumerate(list_dict):
         order = index + 1
-        file_path = d["file_output"]
+        file_path = d["file_path"]
 
         if not Path(file_path).exists():
             logging.error(f"file not exist. {file_path}")

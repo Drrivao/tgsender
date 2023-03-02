@@ -141,6 +141,16 @@ def get_data_upload_plan(upload_plan_path_folder: Path) -> list[dict]:
 
     file_path_upload_plan = upload_plan_path_folder / "upload_plan.csv"
     df_upload_plan = pd.read_csv(file_path_upload_plan)
+    
+    file_path_list=list(df_upload_plan['file_path'])
+    description_list=list(df_upload_plan['description'])
+    file_path_list.sort()
+    description_list.sort()
+    file_path=pd.DataFrame(file_path_list)
+    description=pd.DataFrame(description_list)
+    df_upload_plan = pd.concat([file_path,description], axis=1)
+    df_upload_plan.columns=['file_path','description']
+    
     data_upload_plan = df_upload_plan.to_dict("records")
     return data_upload_plan
 
@@ -402,7 +412,5 @@ def main():
             send_via_telegram_api_async(upload_plan_path_folder, dict_config)
         )
 
-
 if __name__ == "__main__":
-
     main()
